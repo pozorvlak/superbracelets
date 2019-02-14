@@ -20,14 +20,20 @@ constraint forall(i in 1..length)(seq[i] != 0);
 % break symmetries by forcing the sequence to start with 1..n
 constraint forall(i in 1..n)(seq[i] = i);
 
-% actually include all the classes!
+% track the start points of each new pattern
 include "globals.mzn";
 array[CLASS] of var index: start;
-constraint alldifferent(start);
+constraint increasing(start);
+constraint forall(i in 1..num_classes-1)(start[i+1] - start[i] <= pattern_length);
+% track which order classes occur in
+array[CLASS] of var CLASS: class_seq;
+constraint alldifferent(class_seq);
+
 % pick a representative pattern for each class
 constraint forall(c in CLASS)(rep[c] in class[c]);
+% actually include all the classes!
 constraint forall(c in CLASS)(
-    forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[rep[c], i])
-);
+    forall(i in 1..pattern_length)(
+        seq[start[c] + i - 1] = pattern[rep[class_seq[c]], i]));
 
 solve minimize length;
