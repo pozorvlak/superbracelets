@@ -24,6 +24,8 @@ constraint forall(i in 1..n)(seq[i] = i);
 include "globals.mzn";
 array[CLASS] of var index: start;
 constraint alldifferent(start);
+var int: max_start = length - pattern_length + 1;
+constraint forall(c in CLASS)(start[c] <= max_start);
 % pick a representative pattern for each class
 constraint forall(c in CLASS)(rep[c] in class[c]);
 constraint forall(c in CLASS)(
