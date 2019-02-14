@@ -11,6 +11,7 @@ int: max_length = num_classes * pattern_length;
 set of int: index = 1..max_length;
 array[index] of var choice: seq;
 var index: length;
+array[CLASS] of var PATTERN: rep;
 
 % fill seq with 0s after the end of the superbracelet
 constraint forall(i in length+1..max_length)(seq[i] = 0);
@@ -21,10 +22,10 @@ constraint forall(i in 1..n)(seq[i] = i);
 
 % actually include all the classes!
 array[CLASS] of var index: start;
+% pick a representative pattern for each class
+constraint forall(c in CLASS)(rep[c] in class[c]);
 constraint forall(c in CLASS)(
-    exists(p in class[c])(
-        forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[p, i])
-    )
+    forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[rep[c], i])
 );
 
 solve minimize length;
