@@ -1,10 +1,33 @@
 {
     "builtinSolverConfigs": [
+        {
+            "additionalCompilerCommandline": "",
+            "additionalData": "",
+            "clearOutputWindow": false,
+            "compressSolutionOutput": 100,
+            "defaultBehavior": true,
+            "flatteningStats": false,
+            "freeSearch": false,
+            "id": "org.gecode.gecode",
+            "nThreads": 8,
+            "name": "Gecode 6.1.0",
+            "optimizationLevel": 1,
+            "outputTiming": false,
+            "printIntermediate": false,
+            "runSolutionChecker": true,
+            "solverFlags": "",
+            "solvingStats": false,
+            "stopAfter": 1,
+            "timeLimit": 0,
+            "verboseFlattening": false,
+            "verboseSolving": false,
+            "version": "6.1.0"
+        }
     ],
     "openFiles": [
         "superbracelets.mzn"
     ],
-    "openTab": 1,
+    "openTab": 0,
     "projectFiles": [
         "data/bracelets_3.dzn",
         "data/bracelets_4.dzn",
