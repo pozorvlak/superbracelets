@@ -21,7 +21,9 @@ constraint forall(i in 1..length)(seq[i] != 0);
 constraint forall(i in 1..n)(seq[i] = i);
 
 % actually include all the classes!
+include "globals.mzn";
 array[CLASS] of var index: start;
+constraint alldifferent(start);
 % pick a representative pattern for each class
 constraint forall(c in CLASS)(rep[c] in class[c]);
 constraint forall(c in CLASS)(
