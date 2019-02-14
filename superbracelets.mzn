@@ -6,7 +6,7 @@ int: num_classes;
 set of int: PATTERN = 1..num_patterns;
 set of int: CLASS = 1..num_classes;
 array[PATTERN, 1..pattern_length] of choice: pattern;
-array[PATTERN] of CLASS: class;
+array[CLASS] of set of PATTERN: class;
 int: max_length = num_classes * pattern_length;
 set of int: index = 1..max_length;
 array[index] of var choice: seq;
@@ -21,9 +21,9 @@ constraint forall(i in 1..n)(seq[i] = i);
 
 % actually include all the classes!
 array[CLASS] of var index: start;
-constraint forall(c in class)(
-    exists(p in PATTERN)(
-        class[p] = c /\ forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[p, i])
+constraint forall(c in CLASS)(
+    exists(p in class[c])(
+        forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[p, i])
     )
 );
 
