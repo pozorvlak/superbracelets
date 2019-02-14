@@ -1,0 +1,25 @@
+{
+    "builtinSolverConfigs": [
+    ],
+    "openFiles": [
+        "superbracelets.mzn"
+    ],
+    "openTab": 1,
+    "projectFiles": [
+        "data/bracelets_3.dzn",
+        "data/bracelets_4.dzn",
+        "data/bracelets_5.dzn",
+        "data/necklaces_3.dzn",
+        "data/necklaces_4.dzn",
+        "data/necklaces_5.dzn",
+        "data/perms_3.dzn",
+        "data/perms_4.dzn",
+        "data/perms_5.dzn",
+        "superbracelets.mzn"
+    ],
+    "projectSolverConfigs": [
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.1.0",
+    "version": 105
+}
