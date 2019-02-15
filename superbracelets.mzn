@@ -27,8 +27,13 @@ array[CLASS] of var index: start;
 constraint alldifferent(start);
 var int: max_start = length - pattern_length + 1;
 constraint forall(c in CLASS)(start[c] <= max_start);
+
 % pick a representative pattern for each class
-constraint forall(c in CLASS)(rep[c] in class[c]);
+array[PATTERN] of var CLASS: pattern_class;
+constraint int_set_channel(pattern_class, class);
+constraint start[pattern_class[1]] = 1;
+
+constraint forall(c in CLASS)(pattern_class[rep[c]] = c);
 constraint forall(c in CLASS)(
     forall(i in 1..pattern_length)(seq[start[c] + i - 1] = pattern[rep[c], i])
 );
