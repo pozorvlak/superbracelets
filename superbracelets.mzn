@@ -16,6 +16,7 @@ array[CLASS] of var PATTERN: rep;
 % fill seq with 0s after the end of the superbracelet
 constraint forall(i in length+1..max_length)(seq[i] = 0);
 constraint forall(i in 1..length)(seq[i] != 0);
+constraint length >= num_classes + pattern_length - 1;
 
 % break symmetries by forcing the sequence to start with 1..n
 constraint forall(i in 1..n)(seq[i] = i);
